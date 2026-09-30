@@ -52,4 +52,4 @@ See the [reference documentation site](https://fludakit.github.io/) for installa
 
 ## Contributing
 
-Contributions are welcome — issues, pull requests, and feature suggestions are all encouraged.
+Contributions are welcome — issues, pull requests, and feature suggestions are all encouraged. See [CONTRIBUTING.md](CONTRIBUTING.md) for how to build the project and submit changes.

@@ -33,7 +33,7 @@ jobs:
       - name: Configure Git
         run: |
           git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@://github.com"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Set Maven Version
         run: |
@@ -46,8 +46,8 @@ jobs:
           git tag ${{ inputs.version }}
           git push origin main --tags
 
-      - name: Publish package
-        run: ./mvnw -P release --batch-mode install -DskipTests
+      - name: Publish package to Maven Central
+        run: mvn -B -ntp -P release install -DskipTests
         env:
           MAVEN_USERNAME: ${{ secrets.CENTRAL_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.CENTRAL_TOKEN }}

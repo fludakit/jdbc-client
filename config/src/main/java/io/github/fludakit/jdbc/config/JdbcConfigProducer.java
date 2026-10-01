@@ -1,35 +1,27 @@
 package io.github.fludakit.jdbc.config;
 
 import io.github.fludakit.jdbc.JdbcConfig;
-import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.inject.Produces;
 import jakarta.inject.Inject;
 
+import org.eclipse.microprofile.config.inject.ConfigProperties;
+
 /**
- * Produces the {@code @ApplicationScoped} {@link JdbcConfig} bean from the {@code jdbcclient.*}
+ * Produces the {@code @ApplicationScoped} {@link JdbcConfig} bean from the {@code fluda.jdbc.*}
  * MicroProfile Config properties. This is the optional integration point consumed by the {@code cdi}
  * module.
  */
 @ApplicationScoped
 public class JdbcConfigProducer {
 
-    @Inject
-    @ConfigProperty(name = "jdbcclient.placeholder", defaultValue = "?")
-    private String placeholder;
-
-    @Inject
-    @ConfigProperty(name = "jdbcclient.query-timeout", defaultValue = "0")
-    private int queryTimeout;
-
-    @Inject
-    @ConfigProperty(name = "jdbcclient.fetch-size", defaultValue = "0")
-    private int fetchSize;
+    @Inject @ConfigProperties
+    private JdbcProperties properties;
 
     @Produces
     @ApplicationScoped
     public JdbcConfig produce() {
-        return new JdbcConfig(placeholder, queryTimeout, fetchSize);
+        return new JdbcConfig(properties.placeholder(), properties.queryTimeout(), properties.fetchSize());
     }
 }

@@ -51,7 +51,22 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- Module-specific dependencies can be added here -->
+            <!-- JDBC Client modules -->
+            <dependency>
+                <groupId>io.github.fludakit</groupId>
+                <artifactId>fluda-jdbc-client-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.fludakit</groupId>
+                <artifactId>fluda-jdbc-client-config</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.fludakit</groupId>
+                <artifactId>fluda-jdbc-client-cdi</artifactId>
+                <version>${project.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

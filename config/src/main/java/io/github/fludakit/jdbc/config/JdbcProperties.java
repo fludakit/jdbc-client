@@ -3,22 +3,23 @@ package io.github.fludakit.jdbc.config;
 import org.eclipse.microprofile.config.inject.ConfigProperties;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
-import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.Dependent;
 
 /**
  * Holds the {@code fluda.jdbc.*} MicroProfile Config properties for JDBC client configuration.
  */
-@ApplicationScoped
+@Dependent
 @ConfigProperties(prefix = "fluda.jdbc")
 public class JdbcProperties {
 
-    private String placeholder = "?";
+    @ConfigProperty(name = "placeholder", defaultValue = "?")
+    private String placeholder;
 
-    @ConfigProperty(name = "query-timeout")
-    private int queryTimeout = 0;
+    @ConfigProperty(name = "query-timeout", defaultValue = "0")
+    private int queryTimeout;
 
-    @ConfigProperty(name = "fetch-size")
-    private int fetchSize = 0;
+    @ConfigProperty(name = "fetch-size", defaultValue = "0")
+    private int fetchSize;
 
     public String placeholder() {
         return placeholder;

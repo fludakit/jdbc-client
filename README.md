@@ -1,5 +1,7 @@
 # FluDa JDBC Client
 
+[![Build](https://github.com/fludakit/jdbc-client/actions/workflows/build.yml/badge.svg)](https://github.com/fludakit/jdbc-client/actions/workflows/build.yml)
+
 A lightweight, type-safe, fluent query engine built directly over JDBC for Jakarta EE / CDI applications.
 
 ## Modules

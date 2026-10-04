@@ -12,35 +12,22 @@ A lightweight, type-safe, fluent query engine built directly over JDBC for Jakar
 
 ## Usage
 
-### Creating a `JdbcClient`
+Create a `JdbcClient` from any `DataSource` and run fluent queries:
 
 ```java
 import io.github.fludakit.jdbc.JdbcClient;
-
 import javax.sql.DataSource;
 
 DataSource dataSource = ...; // obtain a DataSource from your application or runtime
-
 JdbcClient client = new JdbcClient(dataSource);
-```
 
-### Performing a query
-
-```java
-List<Engineer> engineers = client.sql("SELECT id, name FROM engineers WHERE id = :id")
-        .param("id", 1L)
+List<Engineer> engineers = client.sql("SELECT id, name FROM engineers WHERE department = :dept")
+        .param("dept", "Engineering")
         .query(Engineer.class)
         .list();
 ```
 
-### Updating existing data
-
-```java
-int rows = client.sql("UPDATE engineers SET name = :name WHERE id = :id")
-        .param("name", "Ada Lovelace")
-        .param("id", 1L)
-        .update();
-```
+For CDI integration, updates and generated keys, result mapping, converters, and configuration, see the [JDBC Client documentation](https://fludakit.github.io/documentation/jdbc-client/getting-started/).
 
 ## Building
 
@@ -50,7 +37,7 @@ int rows = client.sql("UPDATE engineers SET name = :name WHERE id = :id")
 
 ## Documentation
 
-See the [reference documentation site](https://fludakit.github.io/) for installation, quickstart, and full API reference.
+See the [reference documentation site](https://fludakit.github.io/documentation/jdbc-client/getting-started/) for getting started, querying, updates, and full API reference.
 
 ## Contributing
 

@@ -8,7 +8,7 @@
  * <h2>Quick Start</h2>
  * <pre>{@code
  * DataSource dataSource = // ... your DataSource
- * JdbcClient client = JdbcClient.create(dataSource);
+ * JdbcClient client = new JdbcClient(dataSource);
  *
  * // Query with automatic mapping
  * List<User> users = client
@@ -18,10 +18,11 @@
  *     .list();
  *
  * // Update with generated keys
- * KeyHolder keys = client
+ * KeyHolder keys = new GeneratedKeyHolder();
+ * client
  *     .sql("INSERT INTO users (name, email) VALUES (:name, :email)")
  *     .params(Map.of("name", "John", "email", "john@example.com"))
- *     .updateAndReturnKeys();
+ *     .update(keys);
  * }</pre>
  *
  * <h2>Key Components</h2>
@@ -36,8 +37,7 @@
  * <h2>Features</h2>
  * <ul>
  *   <li>Named and positional parameter binding</li>
- *   <li>Automatic mapping to records, classes, and Maps</li>
- *   <li>Custom {@link io.github.fludakit.jdbc.RowMapper} for complex mappings</li>
+ *   <li>Automatic mapping to records, POJOs, and scalar types; use a {@link io.github.fludakit.jdbc.RowMapper} for anything else</li>
  *   <li>Type conversion via {@link io.github.fludakit.jdbc.converter.ConverterRegistry}</li>
  *   <li>Streaming results for large datasets</li>
  *   <li>Batch operations</li>

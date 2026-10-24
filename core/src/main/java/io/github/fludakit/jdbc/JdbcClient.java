@@ -439,13 +439,12 @@ public class JdbcClient {
          * @param <T>   scalar type
          * @return the scalar value
          * @throws JdbcClientException with {@link JdbcClientException.Code#NO_RESULT}
-         *                             if no row exists
+         *                             if no row exists, or
+         *                             {@link JdbcClientException.Code#TOO_MANY_RESULTS}
+         *                             if more than one row exists
          */
         public <T> T singleValue(Class<T> clazz) {
-            return optionalValue(clazz)
-                    .orElseThrow(() -> new JdbcClientException(
-                            JdbcClientException.Code.NO_RESULT,
-                            "Expected a single value but got none"));
+            return query(clazz).single();
         }
 
         /**
@@ -454,16 +453,11 @@ public class JdbcClient {
          * @param clazz scalar target type
          * @param <T>   scalar type
          * @return the value, or empty when no row exists
+         * @throws JdbcClientException with {@link JdbcClientException.Code#TOO_MANY_RESULTS}
+         *                             if more than one row exists
          */
         public <T> Optional<T> optionalValue(Class<T> clazz) {
-            ParsedSql parsed = parseSql(rawSql);
-            RowMapper<T> mapper = decorateMapper(new TypedRowMapper<>(clazz));
-            return executeQuery(parsed, rs -> {
-                if (!rs.next()) {
-                    return Optional.<T>empty();
-                }
-                return Optional.ofNullable(mapper.mapRow(rs, 0));
-            });
+            return query(clazz).optional();
         }
 
         /**

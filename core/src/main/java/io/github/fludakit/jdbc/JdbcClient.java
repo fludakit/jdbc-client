@@ -144,8 +144,16 @@ public class JdbcClient {
      *
      * @param sql SQL containing optional {@code :name} parameters
      * @return a statement specification
+     * @throws IllegalStateException if this client was created through the no-arg constructor and
+     *                               never initialized - use {@link #JdbcClient(DataSource)} or
+     *                               {@link #builder(DataSource)}
      */
     public SqlSpec sql(String sql) {
+        if (config == null) {
+            throw new IllegalStateException(
+                    "JdbcClient is not initialized; use JdbcClient(DataSource) or JdbcClient.builder(DataSource). "
+                            + "The no-arg constructor exists only for CDI client proxies.");
+        }
         return new SqlSpec(sql);
     }
 

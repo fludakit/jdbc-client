@@ -138,27 +138,6 @@ public class JdbcClient {
     }
 
     /**
-     * Sets the data source used by subsequent operations.
-     */
-    public void setDataSource(DataSource dataSource) {
-        this.dataSource = dataSource;
-    }
-
-    /**
-     * Sets the registry used for reflective result conversion.
-     */
-    public void setConverterRegistry(ConverterRegistry converterRegistry) {
-        this.converterRegistry = converterRegistry;
-    }
-
-    /**
-     * Sets the default statement configuration.
-     */
-    public void setConfig(JdbcConfig config) {
-        this.config = config;
-    }
-
-    /**
      * Starts a fluent operation for an SQL statement.
      *
      * @param sql SQL containing optional {@code :name} parameters

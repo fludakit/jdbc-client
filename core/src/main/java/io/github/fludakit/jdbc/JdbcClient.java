@@ -61,6 +61,8 @@ import javax.sql.DataSource;
  */
 public class JdbcClient {
 
+    private static final Pattern NAMED_PARAM_PATTERN = Pattern.compile("(?<!:):([a-zA-Z0-9_]+)");
+
     private DataSource dataSource;
     private ConverterRegistry converterRegistry;
     private JdbcConfig config;
@@ -601,8 +603,7 @@ public class JdbcClient {
                 return new ParsedSql(sql, List.of());
             }
 
-            Pattern pattern = Pattern.compile("(?<!:):([a-zA-Z0-9_]+)");
-            Matcher matcher = pattern.matcher(sql);
+            Matcher matcher = NAMED_PARAM_PATTERN.matcher(sql);
             StringBuilder sb = new StringBuilder();
             List<String> parameterNames = new ArrayList<>();
 

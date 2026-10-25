@@ -794,7 +794,7 @@ public class JdbcClient {
                 int columnCount = metaData.getColumnCount();
                 Map<String, Object> rowValues = new HashMap<>();
                 for (int i = 1; i <= columnCount; i++) {
-                    rowValues.put(metaData.getColumnLabel(i).toLowerCase().replace("_", ""), rs.getObject(i));
+                    rowValues.put(normalizeIdentifier(metaData.getColumnLabel(i)), rs.getObject(i));
                 }
 
                 if (targetClass.isRecord()) {
@@ -806,14 +806,14 @@ public class JdbcClient {
                     Constructor<?> c = targetClass.getDeclaredConstructor(paramTypes);
                     Object[] args = new Object[components.length];
                     for (int i = 0; i < components.length; i++) {
-                        Object val = rowValues.get(components[i].getName().toLowerCase());
+                        Object val = rowValues.get(normalizeIdentifier(components[i].getName()));
                         args[i] = applyConversions(val, paramTypes[i]);
                     }
                     return targetClass.cast(c.newInstance(args));
                 } else {
                     T instance = targetClass.getDeclaredConstructor().newInstance();
                     for (Field f : targetClass.getDeclaredFields()) {
-                        String name = f.getName().toLowerCase();
+                        String name = normalizeIdentifier(f.getName());
                         if (rowValues.containsKey(name)) {
                             f.setAccessible(true);
                             f.set(instance, applyConversions(rowValues.get(name), f.getType()));
@@ -824,6 +824,15 @@ public class JdbcClient {
             } catch (Exception e) {
                 throw new SQLException(e);
             }
+        }
+
+        /**
+         * Single column/field naming rule so snake_case columns and snake_case component or field
+         * names both land on the same key; without this, a field named {@code dev_name} can never
+         * match a column labeled {@code DEV_NAME} (column keys strip underscores, lookups did not).
+         */
+        private String normalizeIdentifier(String name) {
+            return name.toLowerCase().replace("_", "");
         }
 
         private boolean isSimpleType(Class<?> type) {

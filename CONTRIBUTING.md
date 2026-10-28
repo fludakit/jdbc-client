@@ -28,9 +28,9 @@ cd jdbc-client
 
 ```
 .
-├── core/                   # fluda-jdbc-client-core — the plain JdbcClient API (DataSource only)
-├── config/                 # fluda-jdbc-client-config — MicroProfile Config integration
-└── cdi/                    # fluda-jdbc-client-cdi — CDI producers for JdbcClient and converters
+├── core/                   # fluda-jdbc-core — the plain JdbcClient API (DataSource only)
+├── config/                 # fluda-jdbc-config — MicroProfile Config integration
+└── cdi/                    # fluda-jdbc-cdi — CDI producers for JdbcClient and converters
 ```
 
 ## Code style

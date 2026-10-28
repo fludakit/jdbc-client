@@ -6,9 +6,9 @@ A lightweight, type-safe, fluent query engine built directly over JDBC for Jakar
 
 ## Modules
 
-- `fluda-jdbc-client-core`: the core `JdbcClient` API and supporting types.
-- `fluda-jdbc-client-config`: optional MicroProfile Config integration.
-- `fluda-jdbc-client-cdi`: CDI producers for `JdbcClient` and converters.
+- `fluda-jdbc-core`: the core `JdbcClient` API and supporting types.
+- `fluda-jdbc-config`: optional MicroProfile Config integration.
+- `fluda-jdbc-cdi`: CDI producers for `JdbcClient` and converters.
 
 ## Usage
 

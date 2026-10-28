@@ -6,12 +6,12 @@
 
     <parent>
         <groupId>io.github.fludakit</groupId>
-        <artifactId>fluda-jdbc-client-parent</artifactId>
+        <artifactId>fluda-jdbc-parent</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>fluda-jdbc-client-config</artifactId>
+    <artifactId>fluda-jdbc-config</artifactId>
     <packaging>jar</packaging>
 
     <name>FluDa :: Jdbc Client :: Config</name>
@@ -20,7 +20,7 @@
     <dependencies>
         <dependency>
             <groupId>io.github.fludakit</groupId>
-            <artifactId>fluda-jdbc-client-core</artifactId>
+            <artifactId>fluda-jdbc-core</artifactId>
         </dependency>
         <dependency>
             <groupId>jakarta.enterprise</groupId>
@@ -65,7 +65,7 @@
                         <configuration>
                             <module>
                                 <moduleInfo>
-                                    <name>fluda.jdbc.client.config</name>
+                                    <name>fluda.jdbc.config</name>
                                     <exports>
                                         io.github.fludakit.jdbc.config;
                                     </exports>

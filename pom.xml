@@ -11,7 +11,7 @@
         <relativePath/>
     </parent>
 
-    <artifactId>fluda-jdbc-client-parent</artifactId>
+    <artifactId>fluda-jdbc-parent</artifactId>
     <packaging>pom</packaging>
 
     <name>FluDa :: Jdbc Client</name>
@@ -54,17 +54,17 @@
             <!-- JDBC Client modules -->
             <dependency>
                 <groupId>io.github.fludakit</groupId>
-                <artifactId>fluda-jdbc-client-core</artifactId>
+                <artifactId>fluda-jdbc-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.github.fludakit</groupId>
-                <artifactId>fluda-jdbc-client-config</artifactId>
+                <artifactId>fluda-jdbc-config</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.github.fludakit</groupId>
-                <artifactId>fluda-jdbc-client-cdi</artifactId>
+                <artifactId>fluda-jdbc-cdi</artifactId>
                 <version>${project.version}</version>
             </dependency>
 

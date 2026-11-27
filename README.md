@@ -27,7 +27,7 @@ List<Engineer> engineers = client.sql("SELECT id, name FROM engineers WHERE depa
         .list();
 ```
 
-For CDI integration, updates and generated keys, result mapping, converters, and configuration, see the [JDBC Client documentation](https://fludakit.github.io/documentation/jdbc-client/getting-started/).
+For CDI integration, updates and generated keys, result mapping, converters, and configuration, see the [JDBC Client documentation](https://fludakit.github.io/jdbc-client/getting-started/).
 
 ## Building
 
@@ -37,7 +37,7 @@ For CDI integration, updates and generated keys, result mapping, converters, and
 
 ## Documentation
 
-See the [reference documentation site](https://fludakit.github.io/documentation/jdbc-client/getting-started/) for getting started, querying, updates, and full API reference.
+See the [reference documentation site](https://fludakit.github.io/jdbc-client/getting-started/) for getting started, querying, updates, and full API reference.
 
 ## Contributing
 

@@ -20,3 +20,8 @@ Follow this reading order:
 
 - Start with [getting started](getting-started.md) to add the dependency, run your first query, and review configuration options such as placeholders, timeouts, and defaults.
 - Explore [querying and result mapping](querying.md) and [updates](updates.md) for detailed behavior.
+
+
+---
+
+[FluDa Toolkit — browse all modules](https://fludakit.github.io/){ .md-button .md-button--primary }

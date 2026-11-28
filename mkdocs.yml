@@ -11,14 +11,14 @@ theme:
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: custom
+      primary: indigo
       accent: amber
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: custom
+      primary: indigo
       accent: amber
       toggle:
         icon: material/brightness-4
@@ -71,4 +71,3 @@ nav:
   - Getting Started: getting-started.md
   - Querying and Result Mapping: querying.md
   - Updates and Generated Keys: updates.md
-  - FluDa Toolkit: https://fludakit.github.io/
